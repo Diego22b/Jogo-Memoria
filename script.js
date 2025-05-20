@@ -32,7 +32,7 @@ function iniciarJogo() {
 
     const frente = document.createElement("div");
     frente.classList.add("frente");
-    frente.style.backgroundImage = `url('IMG/${img}.png')`;
+    frente.style.backgroundImage = `url('img/${img}.png')`;
 
     const verso = document.createElement("div");
     verso.classList.add("verso");
