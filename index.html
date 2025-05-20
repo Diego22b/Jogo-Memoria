@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jogo da Memória</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Jogo da Memória - Competências Digitais</h1>
+
+  <label for="nomeJogador">Nome:</label>
+  <input type="text" id="nomeJogador" placeholder="Digite seu nome" />
+  <div id="timer">Tempo: 00:00</div>
+  <button onclick="iniciarJogo()">Reiniciar</button>
+
+  <div id="container">
+    <div id="tabuleiro"></div>
+    <div id="placar">
+      <h2>🏆 Placar</h2>
+      <p>Carregando...</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
