@@ -1,0 +1,216 @@
+body {
+  background-color: #44E394;
+  font-family: sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #000000;
+  margin-bottom: 5px;
+  font-size: 1.8rem;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+input#nomeJogador {
+  padding: 8px 12px;
+  font-size: 1rem;
+  width: 200px;
+  max-width: 90vw;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+
+button#btnComecar {
+  padding: 8px 24px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #008000;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button#btnComecar:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+button#btnComecar:hover:not(:disabled) {
+  background-color: #006400;
+}
+
+#timer {
+  font-size: 1.25rem;
+  margin: 10px 0 20px;
+  font-weight: bold;
+  color: #000000;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 10px;
+  max-width: 100vw;
+}
+
+/* Tabuleiro: grid com 4 colunas, ajusta no mobile */
+#tabuleiro {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 10px;
+  perspective: 1000px;
+  pointer-events: none; /* começa bloqueado */
+  opacity: 0.5;         /* efeito visual de bloqueio */
+  max-width: 100vw;
+}
+
+/* Carta */
+.carta {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  border-radius: 10px;
+  border: 2px solid #000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.carta .frente,
+.carta .verso {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.carta .frente {
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(180deg);
+}
+
+.carta .verso {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.carta.virada {
+  transform: rotateY(180deg);
+}
+
+/* Placar */
+#placar {
+  width: 220px;
+  max-width: 90vw;
+  text-align: left;
+  background: #ffffffcc;
+  border: 2px solid #000000;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#placar h2 {
+  margin-top: 0;
+  font-size: 1.3em;
+  color: #222;
+  text-align: center;
+}
+
+#placar p {
+  font-size: 1em;
+  margin: 6px 0;
+}
+
+/* Botão Resetar Placar dentro do placar */
+#placar button {
+  margin-top: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #cc0000;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#placar button:hover {
+  background-color: #990000;
+}
+
+/* ===== RESPONSIVO ===== */
+
+/* Para telas menores que 600px - celular */
+@media (max-width: 600px) {
+  #container {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  #tabuleiro {
+    grid-template-columns: repeat(3, 90px);
+    gap: 8px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .carta {
+    width: 90px;
+    height: 90px;
+    border-width: 1.5px;
+  }
+
+  .carta .verso {
+    font-size: 20px;
+  }
+
+  #placar {
+    width: 90vw;
+    max-width: 320px;
+    padding: 12px;
+  }
+
+  input#nomeJogador {
+    width: 90vw;
+    max-width: 320px;
+    margin-bottom: 10px;
+    margin-right: 0;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  button#btnComecar {
+    width: 90vw;
+    max-width: 320px;
+    padding: 10px 0;
+    font-size: 1.1rem;
+  }
+
+  #timer {
+    font-size: 1.4rem;
+  }
+}
